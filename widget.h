@@ -86,7 +86,6 @@ private:
 
 
     void compressData();
-    QString formatCurrency(double amount);
     void restoreBackup();
 
 };

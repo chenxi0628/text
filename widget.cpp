@@ -134,6 +134,14 @@ Widget::Widget(QWidget *parent)
         }
         );
 
+    if (!checkDataIntegrity()) {
+        QMessageBox::warning(
+            this,
+            "数据问题",
+            "发现无效数据，请检查数据文件"
+            );
+    }
+
     loadAutoBackup();
 }
 
@@ -289,6 +297,7 @@ void Widget::refreshTable()
 
     updateSummary();
 }
+
 
 void Widget::updateSummary()
 {
@@ -760,14 +769,6 @@ void Widget::compressData()
             "未找到可压缩的重复记录"
             );
     }
-}
-
-
-QString Widget::formatCurrency(double amount)
-{
-    return QString("¥%1").arg(
-        QString::number(amount, 'f', 2)
-        );
 }
 
 
